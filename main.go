@@ -8,40 +8,32 @@ import (
 	"github.com/labstack/echo"
 )
 
-// User is
-type User struct {
-	Name  string `json:"name" xml:"name" form:"name" query:"name"`
-	Email string `json:"email" xml:"email" form:"email" query:"name"`
-}
-
 func main() {
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
 
-		cookieVal := &http.Cookie{
-			Name:     "uid",
-			Value:    "1212",
-			Path:     "/",
-			HttpOnly: false,
-		}
-		c.SetCookie(cookieVal)
+	e.Static("/static", "static")
 
-		return c.String(http.StatusOK, "ok")
-	})
+	e.GET("/", index)
 
-	e.POST("/users", func(c echo.Context) error {
-		u := new(User)
-		if err := c.Bind(u); err != nil {
-			return err
-		}
-		return c.JSON(http.StatusCreated, u)
-		// or
-		// return c.XML(http.StatusCreated, u)
-	})
+	e.POST("/users", users)
 
 	e.POST("/save", save)
 
 	e.Logger.Fatal(e.Start(":1212"))
+}
+
+func index(c echo.Context) error {
+	cookieVal := &http.Cookie{
+		Name:     "uid",
+		Value:    "1212",
+		Path:     "/",
+		HttpOnly: false,
+	}
+	c.SetCookie(cookieVal)
+
+	WriteCookie(c)
+
+	return c.String(http.StatusOK, "ok")
 }
 
 func save(c echo.Context) error {
@@ -73,4 +65,21 @@ func save(c echo.Context) error {
 	}
 
 	return c.HTML(http.StatusOK, "<b>Thank you! "+name+"</b>")
+}
+
+func users(c echo.Context) error {
+
+	// User is
+	type User struct {
+		Name  string `json:"name" xml:"name" form:"name" query:"name"`
+		Email string `json:"email" xml:"email" form:"email" query:"name"`
+	}
+
+	u := new(User)
+	if err := c.Bind(u); err != nil {
+		return err
+	}
+	return c.JSON(http.StatusCreated, u)
+	// or
+	// return c.XML(http.StatusCreated, u)
 }

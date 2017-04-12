@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;echo&gt;">
+    <CLASSES>
+      <root url="file://D:/lang/go/path/src/gopkg.in" />
+      <root url="file://D:/lang/go/path/src/github.com" />
+      <root url="file://D:/lang/go/path/src/less" />
+      <root url="file://D:/lang/go/path/src/golang.org" />
+      <root url="file://D:/lang/go/path/src/lib.anla" />
+      <root url="file://D:/lang/go/path/src/sourcegraph.com" />
+      <root url="file://D:/lang/go/path/src/awesomeProject" />
+    </CLASSES>
+    <SOURCES>
+      <root url="file://D:/lang/go/path/src/gopkg.in" />
+      <root url="file://D:/lang/go/path/src/github.com" />
+      <root url="file://D:/lang/go/path/src/less" />
+      <root url="file://D:/lang/go/path/src/golang.org" />
+      <root url="file://D:/lang/go/path/src/lib.anla" />
+      <root url="file://D:/lang/go/path/src/sourcegraph.com" />
+      <root url="file://D:/lang/go/path/src/awesomeProject" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
